@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: poc-kustomizeapp-dev
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: corpimg=planethomeregistry.azurecr.io/webpoc:latest-dev
+    argocd-image-updater.argoproj.io/corpimg.update-strategy: digest
+    argocd-image-updater.argoproj.io/corpimg.force-update: "true"
+    argocd-image-updater.argoproj.io/corpimg.pull-secret: pullsecret:argocd/xxx
+    argocd-image-updater.argoproj.io/git-branch: main
+    argocd-image-updater.argoproj.io/write-back-target: kustomization
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/xxx-creds
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/iamraj007/argocdapp.git
+    targetRevision: HEAD
+    path: app/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
