@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pocapp-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-pocapp
+  template:
+    metadata:
+      labels:
+        app: my-pocapp
+    spec:
+      containers:
+      - image: planethomeregistry.azurecr.io/webpoc:latest
+        name: pocapp-front-container-app
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      imagePullSecrets:
+      - name: acr        
