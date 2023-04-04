@@ -11,5 +11,5 @@ patchesStrategicMerge:
 - replica-and-rollout-strategy.yaml
 images:
 - name: planethomeregistry.azurecr.io/webpoc
-  newTag: latest-dev
+  digest: sha256:7641239909e264376ec16288bf9abedeae54577e15e0fd571489fe80c579a832
 nameSuffix: -dev
