@@ -5,7 +5,7 @@ commonLabels:
   myenv: my-pocapp-frontendapp
 resources:
 #- ns.yaml
-- ../../../pocapp/base/
+- ../../base/
 patchesStrategicMerge:
 - deployment_app.yaml
 - replica-and-rollout-strategy.yaml
