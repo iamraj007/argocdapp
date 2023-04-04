@@ -7,7 +7,7 @@ resources:
 #- ns.yaml
 - ../../base/
 patchesStrategicMerge:
-- deployment_app.yaml
+- deployment.yaml
 - replica-and-rollout-strategy.yaml
 images:
 - name: planethomeregistry.azurecr.io/webpoc
